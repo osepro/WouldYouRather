@@ -7,6 +7,52 @@
   pointer-events: none;
 }
 
+.header1 {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.header2 {
+  font-size: 16px;
+}
+
+.logo {
+  margin-top: 20px;
+  margin-bottom: 20;
+}
+
+.submit {
+  margin: 3px 0 2px;
+  padding: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  width: 97%;
+  background-color: #3bfebb;
+  font-weight: bold;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.topHeader {
+  background-color: #eee;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-bottom: solid 1px #ccc;
+}
+
+.formControl {
+  margin: 5px;
+  min-width: 95%;
+}
+.paper {
+  margin-top: 8px;
+  text-align: center;
+  border: solid 2px #ccc;
+  background-color: #ffffff;
+  border-radius: 5px 5px 5px 5px;
+  width: 40%;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
