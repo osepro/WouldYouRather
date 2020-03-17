@@ -2,8 +2,9 @@ import React from "react";
 import AppBar from "@material-ui/core/AppBar";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Toolbar from "@material-ui/core/Toolbar";
-import Link from "@material-ui/core/Link";
 import { makeStyles } from "@material-ui/core/styles";
+import { NavLink } from "react-router-dom";
+import { connect } from "react-redux";
 
 const useStyles = makeStyles(theme => ({
   "@global": {
@@ -41,46 +42,21 @@ const Nav = () => {
       >
         <Toolbar className={classes.toolbar}>
           <nav align="center">
-            <Link
-              variant="button"
-              color="textPrimary"
-              href="#"
-              className={classes.link}
-            >
-              Home
-            </Link>
-            <Link
-              variant="button"
-              color="textPrimary"
-              href="#"
-              className={classes.link}
-            >
-              New Question
-            </Link>
-            <Link
-              variant="button"
-              color="textPrimary"
-              href="#"
-              className={classes.link}
-            >
-              Leader Board
-            </Link>
-            <Link
-              variant="button"
-              color="textPrimary"
-              href="#"
-              className={classes.link}
-            >
-              Hello Ose
-            </Link>
-            <Link
-              variant="button"
-              color="textPrimary"
-              href="#"
-              className={classes.link}
-            >
-              Logout
-            </Link>
+            <ul className="navList">
+              <li>
+                <NavLink to="/" exact activeClassName="active">
+                  Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/newquestions" exact activeClassName="active">
+                  New Question
+                </NavLink>
+              </li>
+              <li>Leader Board</li>
+              <li>Hello Ose</li>
+              <li>Logout</li>
+            </ul>
           </nav>
         </Toolbar>
       </AppBar>
@@ -88,4 +64,10 @@ const Nav = () => {
   );
 };
 
-export default Nav;
+function mapStateToProps({ users }) {
+  return {
+    users: users
+  };
+}
+
+export default connect(mapStateToProps)(Nav);
