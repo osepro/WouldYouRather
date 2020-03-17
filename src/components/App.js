@@ -1,7 +1,10 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import Nav from "./Nav";
 import UserLogIn from "./UserLogIn";
+import Players from "./Players";
+import NewQuestions from "./NewQuestions";
 import { connect } from "react-redux";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 //import { allusers } from "../actions/users";
 import { handleUsersLoad } from "../actions";
 import LoadingBar from "react-redux-loading";
@@ -13,11 +16,19 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <Nav />
-        <LoadingBar />
-        {this.props.loading === true ? null : <UserLogIn />}
-      </div>
+      <Router>
+        <Fragment>
+          <LoadingBar />
+          <Nav />
+          {this.props.loading === true ? null : (
+            <div>
+              <Route path="/" exact component={UserLogIn} />
+              <Route path="/users/:id" component={Players} />
+              <Route path="/newquestions" component={NewQuestions} />
+            </div>
+          )}
+        </Fragment>
+      </Router>
     );
   }
 }

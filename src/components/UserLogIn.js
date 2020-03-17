@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../App.css";
-import Players from "./Players";
+//import Players from "./Players";
 import logoReduxReact from "../logoReduxReact.jpeg";
 import { connect } from "react-redux";
 
@@ -8,12 +8,14 @@ class UserLogIn extends Component {
   state = {
     login: false
   };
-  handleSubmit = () => {
-    if (this.refs.selectUser) {
-      this.setState({
-        login: true
-      });
-    }
+
+  handleChange = e => {
+    const id = e.target.value;
+    this.handleSubmit(id);
+  };
+
+  handleSubmit = id => {
+    this.props.history.push(`/users/${id}`);
   };
 
   render() {
@@ -43,7 +45,11 @@ class UserLogIn extends Component {
               : this.props.users.users.map((member, i) => (
                   <div key={i}>
                     <div className="form">
-                      <select id="users" ref="selectUser">
+                      <select
+                        id="users"
+                        ref="selectUser"
+                        onChange={this.handleChange}
+                      >
                         <option>Select User</option>
                         {Object.keys(member).map(key => (
                           <option
@@ -62,7 +68,6 @@ class UserLogIn extends Component {
                       <button className="submit" onClick={this.handleSubmit}>
                         Sign In
                       </button>
-                      {this.state.login ? <Players /> : ""}
                     </div>
                     <p></p>
                   </div>
