@@ -6,16 +6,19 @@ import { connect } from "react-redux";
 
 class UserLogIn extends Component {
   state = {
-    login: false
+    selectVal: ""
   };
 
-  handleChange = e => {
+  handleSelect = e => {
+    e.preventDefault();
     const id = e.target.value;
-    this.handleSubmit(id);
+    this.setState({
+      selectVal: id
+    });
   };
 
-  handleSubmit = id => {
-    this.props.history.push(`/users/${id}`);
+  handleSubmit = () => {
+    this.props.history.push(`/users/${this.state.selectVal}`);
   };
 
   render() {
@@ -45,29 +48,25 @@ class UserLogIn extends Component {
               : this.props.users.users.map((member, i) => (
                   <div key={i}>
                     <div className="form">
-                      <select
-                        id="users"
-                        ref="selectUser"
-                        onChange={this.handleChange}
-                      >
-                        <option>Select User</option>
-                        {Object.keys(member).map(key => (
-                          <option
-                            key={member[key].id}
-                            value={member[key].id}
-                            style={{
-                              width: "50px",
-                              height: "50px",
-                              float: "left"
-                            }}
-                          >
-                            {member[key].name}
-                          </option>
-                        ))}
-                      </select>
-                      <button className="submit" onClick={this.handleSubmit}>
-                        Sign In
-                      </button>
+                      <form onSubmit={this.handleSubmit}>
+                        <select id="users" onChange={this.handleSelect}>
+                          <option>Select User</option>
+                          {Object.keys(member).map(key => (
+                            <option
+                              key={member[key].id}
+                              value={member[key].id}
+                              style={{
+                                width: "50px",
+                                height: "50px",
+                                float: "left"
+                              }}
+                            >
+                              {member[key].name}
+                            </option>
+                          ))}
+                        </select>
+                        <button className="submit">Sign In</button>
+                      </form>
                     </div>
                     <p></p>
                   </div>
