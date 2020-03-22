@@ -3,9 +3,9 @@ import Nav from "./Nav";
 import UserLogIn from "./UserLogIn";
 import Players from "./Players";
 import NewQuestions from "./NewQuestions";
+import PlayerProfile from "./PlayerProfile";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-//import { allusers } from "../actions/users";
 import { handleUsersLoad } from "../actions";
 import LoadingBar from "react-redux-loading";
 
@@ -25,6 +25,7 @@ class App extends Component {
               <Route path="/" exact component={UserLogIn} />
               <Route path="/users/:id" component={Players} />
               <Route path="/newquestions" component={NewQuestions} />
+              <Route path="/profile/:id" component={PlayerProfile} />
             </div>
           )}
         </Fragment>

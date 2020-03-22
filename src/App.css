@@ -21,6 +21,8 @@
   margin-bottom: 20;
 }
 
+.header-profile {}
+
 .submit {
   margin: 3px 0 2px;
   padding: 10px;
@@ -44,6 +46,7 @@
   margin: 5px;
   min-width: 95%;
 }
+
 .paper {
   margin-top: 8px;
   text-align: center;
@@ -52,15 +55,18 @@
   border-radius: 5px 5px 5px 5px;
   width: 40%;
 }
+
 .textTop {
   text-align: left;
   margin-left: 5px;
 }
+
 .inputBox {
   width: 98%;
   padding: 2%;
   font-size: 12px;
 }
+
 .line {
   height: 2px;
   background: #ccc;
@@ -73,6 +79,7 @@ h2.orLine {
   display: inline-block;
   padding: 0 20px;
 }
+
 .container {
   text-align: center;
   margin-top: -42px;
@@ -80,16 +87,20 @@ h2.orLine {
   width: 97%;
   margin-left: 6px;
 }
+
 #users {
   width: 97%;
   padding: 20px;
 }
+
 select#users option[value="sarahedo"] {
   background-image: url("https://tylermcginnis.com/would-you-rather/sarah.jpg");
 }
+
 select#users option[value="tylermcginnis"] {
   background-image: url("https://tylermcginnis.com/would-you-rather/sarah.jpg");
 }
+
 select#users option[value="johndoe"] {
   background-image: url("https://tylermcginnis.com/would-you-rather/dan.jpg");
 }
@@ -104,7 +115,9 @@ select#users option[value="johndoe"] {
   float: left;
   margin-right: 10px;
   list-style: none;
+  margin-left: 10px;
 }
+
 
 .headerPlay {
   padding: 10px 5px 10px 5px;
@@ -112,18 +125,25 @@ select#users option[value="johndoe"] {
 }
 
 .playerProfile {
-  border: solid 1px #333;
+  border: solid 3px #eee;
   border-radius: 5px;
   min-height: 200px;
-  margin: 5px 15px 15px 5px;
-  padding: 10px;
+  margin: 5px 10px 15px 10px;
+}
+
+.playerProfile-inner {
+  border: solid 3px #eee;
+  border-radius: 5px;
+  min-height: 224px;
+  margin: 5px 10px 15px 10px;
 }
 
 .profilePix {
-  width: 20%;
-  height: 20px;
+  width: 105px;
+  height: 105px;
+  border-radius: 50px;
   float: left;
-  background-color: #333;
+  border: solid 5px #FFF;
 }
 
 .profileContent {
@@ -131,6 +151,56 @@ select#users option[value="johndoe"] {
   height: 50px;
   float: right;
   border-left: solid 1px #ccc;
+}
+
+.header-profile {
+  background-color: #eee;
+  margin-top: 0;
+  border-radius: 5px 5px 0 0;
+  text-align: left;
+  padding: 8px;
+  margin-bottom: 0;
+}
+
+.mainDetails {
+  padding: 10px;
+}
+
+.would-header {
+  margin-top: 0px;
+}
+
+h2.would-header {
+  margin-top: 0px;
+  text-align: left;
+  margin-left: 10px;
+}
+
+.listProfile {
+  text-align: left;
+  margin-left: 10px;
+}
+
+.view-button {
+  padding: 10px;
+  border: solid 1px #3bfebb;
+  border-radius: 5px;
+  width: 280px;
+  color: #3bfebb;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.view-rather {
+  padding: 10px;
+  border: solid 1px #3bfebb;
+  border-radius: 5px;
+  width: 292px;
+  background-color: #3bfebb;
+  cursor: pointer;
+  color: #000;
+  font-weight: bold;
+  margin-top: 5px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -158,6 +228,7 @@ select#users option[value="johndoe"] {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

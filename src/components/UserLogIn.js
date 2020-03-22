@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "../App.css";
-//import Players from "./Players";
 import logoReduxReact from "../logoReduxReact.jpeg";
 import { connect } from "react-redux";
 
@@ -43,34 +42,32 @@ class UserLogIn extends Component {
             >
               Sign in
             </p>
-            {!this.props.users.users
-              ? ""
-              : this.props.users.users.map((member, i) => (
-                  <div key={i}>
-                    <div className="form">
-                      <form onSubmit={this.handleSubmit}>
-                        <select id="users" onChange={this.handleSelect}>
-                          <option>Select User</option>
-                          {Object.keys(member).map(key => (
-                            <option
-                              key={member[key].id}
-                              value={member[key].id}
-                              style={{
-                                width: "50px",
-                                height: "50px",
-                                float: "left"
-                              }}
-                            >
-                              {member[key].name}
-                            </option>
-                          ))}
-                        </select>
-                        <button className="submit">Sign In</button>
-                      </form>
-                    </div>
-                    <p></p>
-                  </div>
-                ))}
+            <div>
+              <div className="form">
+                <form onSubmit={this.handleSubmit}>
+                  <select id="users" onChange={this.handleSelect}>
+                    <option>Select User</option>
+                    {!this.props.users
+                      ? ""
+                      : Object.keys(this.props.users).map(key => (
+                          <option
+                            key={this.props.users[key].id}
+                            value={this.props.users[key].id}
+                            style={{
+                              backgroundImage: `url(${this.props.users[key].avatarURL})`,
+                              backgroundSize: "15px 15px",
+                              float: "left"
+                            }}
+                          >
+                            {this.props.users[key].name}
+                          </option>
+                        ))}
+                  </select>
+                  <button className="submit">Sign In</button>
+                </form>
+              </div>
+              <p></p>
+            </div>
           </div>
         </div>
       </div>
@@ -80,7 +77,8 @@ class UserLogIn extends Component {
 
 const mapStateToProps = state => {
   return {
-    users: state.users
+    users: state.users,
+    questions: state.questions
   };
 };
 

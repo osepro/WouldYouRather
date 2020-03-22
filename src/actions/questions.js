@@ -1,6 +1,6 @@
 import { QUESTIONS } from "../constants";
 
-export function questions(question) {
+export function allquestions(question) {
   return {
     type: QUESTIONS,
     question
