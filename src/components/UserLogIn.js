@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "../App.css";
 import logoReduxReact from "../logoReduxReact.jpeg";
+import { userloggedin } from "../actions/userloggedin";
 import { connect } from "react-redux";
 
 class UserLogIn extends Component {
@@ -17,6 +18,8 @@ class UserLogIn extends Component {
   };
 
   handleSubmit = () => {
+    const { dispatch } = this.props;
+    dispatch(userloggedin(this.state.selectVal));
     this.props.history.push(`/users/${this.state.selectVal}`);
   };
 
