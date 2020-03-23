@@ -1,47 +1,22 @@
-import React from "react";
-import AppBar from "@material-ui/core/AppBar";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Toolbar from "@material-ui/core/Toolbar";
-import { makeStyles } from "@material-ui/core/styles";
+import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
+import { userloggedin } from "../actions/userloggedin";
 import { connect } from "react-redux";
+import { Link, withRouter } from "react-router-dom";
 
-const useStyles = makeStyles(theme => ({
-  "@global": {
-    ul: {
-      margin: 0,
-      padding: 0,
-      listStyle: "none"
-    }
-  },
-  appBar: {
-    borderBottom: `1px solid ${theme.palette.divider}`
-  },
-  toolbar: {
-    flexWrap: "wrap"
-  },
-  toolbarTitle: {
-    flexGrow: 1
-  },
-  link: {
-    margin: theme.spacing(1, 1.5),
-    textTransform: "none"
-  }
-}));
-
-const Nav = () => {
-  const classes = useStyles();
-  return (
-    <div>
-      <CssBaseline />
-      <AppBar
-        position="static"
-        color="default"
-        elevation={0}
-        className={classes.appBar}
-      >
-        <Toolbar className={classes.toolbar}>
-          <nav align="center">
+class Nav extends Component {
+  state = {
+    loggedIn: "loggedin"
+  };
+  handleLogout = () => {
+    const { dispatch } = this.props;
+    dispatch(userloggedin(""));
+  };
+  render() {
+    return (
+      <div>
+        <div className="appBar">
+          <div align="center" className="divLeft">
             <ul className="navList">
               <li>
                 <NavLink to="/" exact activeClassName="active">
@@ -54,20 +29,44 @@ const Nav = () => {
                 </NavLink>
               </li>
               <li>Leader Board</li>
-              <li>Hello Ose</li>
-              <li>Logout</li>
             </ul>
-          </nav>
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
-};
+          </div>
+          {this.props.loggediduser === null
+            ? ""
+            : !this.props.users
+            ? ""
+            : Object.keys(this.props.users)
+                .filter(user => user === this.props.loggediduser)
+                .map(user => (
+                  <div className="userprofileInfo">
+                    <ul className="userprofileInfoList">
+                      <li>Hello, {this.props.users[user].name}</li>
+                      <li>
+                        <div
+                          className="userprofilePix"
+                          style={{
+                            backgroundImage: `url(${this.props.users[user].avatarURL})`,
+                            backgroundSize: "25px 25px"
+                          }}
+                        ></div>
+                      </li>
+                      <Link to={`/`} className="homeRedirect">
+                        <li onClick={this.handleLogout}>LogOut</li>
+                      </Link>
+                    </ul>
+                  </div>
+                ))}
+        </div>
+      </div>
+    );
+  }
+}
 
-function mapStateToProps({ users }) {
+function mapStateToProps({ users, userloggedin }) {
   return {
-    users: users
+    users: users,
+    loggediduser: userloggedin
   };
 }
 
-export default connect(mapStateToProps)(Nav);
+export default withRouter(connect(mapStateToProps)(Nav));

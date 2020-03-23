@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "../App.css";
 import UsersQuestions from "./UsersQuestions";
-import PlayerProfile from "./PlayerProfile";
 
 class Players extends Component {
   viewPoll = id => {
@@ -11,6 +10,7 @@ class Players extends Component {
   render() {
     console.log(this.props.questions);
     console.log(this.props.users);
+    console.log(this.props.loggediduser);
     return (
       <div>
         <div>
@@ -37,7 +37,7 @@ class Players extends Component {
                         className="profilePix"
                         style={{
                           backgroundImage: `url(${this.props.users[key].avatarURL})`,
-                          backgroundSize: "95px 95px"
+                          backgroundSize: "105px 105px"
                         }}
                       ></div>
                       <div className="profileContent">
@@ -71,13 +71,14 @@ class Players extends Component {
   }
 }
 
-function mapStateToProps({ users, questions }, props) {
+function mapStateToProps({ users, questions, userloggedin }, props) {
   const { id } = props.match.params;
 
   return {
     id,
     users: users,
-    questions: questions
+    questions: questions,
+    loggediduser: userloggedin
   };
 }
 

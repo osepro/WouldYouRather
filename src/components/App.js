@@ -7,6 +7,7 @@ import PlayerProfile from "./PlayerProfile";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { handleUsersLoad } from "../actions";
+import { userloggedin } from "../actions/userloggedin";
 import LoadingBar from "react-redux-loading";
 
 class App extends Component {
