@@ -37,8 +37,8 @@ class Nav extends Component {
             ? ""
             : Object.keys(this.props.users)
                 .filter(user => user === this.props.loggediduser)
-                .map(user => (
-                  <div className="userprofileInfo">
+                .map((user, i) => (
+                  <div key={i} className="userprofileInfo">
                     <ul className="userprofileInfoList">
                       <li>Hello, {this.props.users[user].name}</li>
                       <li>

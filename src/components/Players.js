@@ -4,13 +4,20 @@ import "../App.css";
 import UsersQuestions from "./UsersQuestions";
 
 class Players extends Component {
-  viewPoll = id => {
-    this.props.history.push(`/profile/${id}`);
+  viewPoll = (id, profileId) => {
+    if (id === profileId) {
+      this.props.history.push(`/profile/${id}`);
+    } else {
+      this.props.history.push(`/scoreboard/${profileId}`);
+    }
   };
   render() {
     console.log(this.props.questions);
     console.log(this.props.users);
     console.log(this.props.loggediduser);
+    console.log(this.props.id);
+    console.log(this.props.answered);
+    console.log(this.props.notanswered);
     return (
       <div>
         <div>
@@ -46,13 +53,17 @@ class Players extends Component {
                           ...
                           <UsersQuestions
                             question={this.props.users[key].questions}
+                            unanswered={this.props.unanswered}
                           />
                           ...
                         </div>
                         <button
                           className="view-button"
                           onClick={() =>
-                            this.viewPoll(this.props.users[key].id)
+                            this.viewPoll(
+                              this.props.loggediduser,
+                              this.props.users[key].id
+                            )
                           }
                         >
                           View Poll
@@ -73,12 +84,22 @@ class Players extends Component {
 
 function mapStateToProps({ users, questions, userloggedin }, props) {
   const { id } = props.match.params;
+  const answeredquest = Object.keys(users[id].answers);
+  const answered = Object.values(questions)
+    .filter(question => answeredquest.includes(question.id))
+    .sort((a, b) => b.timestamp - a.timestamp);
+
+  const notanswered = Object.values(questions)
+    .filter(question => !answeredquest.includes(question.id))
+    .sort((a, b) => b.timestamp - a.timestamp);
 
   return {
     id,
     users: users,
     questions: questions,
-    loggediduser: userloggedin
+    loggediduser: userloggedin,
+    answered,
+    notanswered
   };
 }
 

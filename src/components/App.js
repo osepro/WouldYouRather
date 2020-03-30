@@ -4,10 +4,10 @@ import UserLogIn from "./UserLogIn";
 import Players from "./Players";
 import NewQuestions from "./NewQuestions";
 import PlayerProfile from "./PlayerProfile";
+import ScoreBoard from "./ScoreBoard";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { handleUsersLoad } from "../actions";
-import { userloggedin } from "../actions/userloggedin";
 import LoadingBar from "react-redux-loading";
 
 class App extends Component {
@@ -27,6 +27,7 @@ class App extends Component {
               <Route path="/users/:id" component={Players} />
               <Route path="/newquestions" component={NewQuestions} />
               <Route path="/profile/:id" component={PlayerProfile} />
+              <Route path="/scoreboard/:id" component={ScoreBoard} />
             </div>
           )}
         </Fragment>
