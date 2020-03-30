@@ -3,17 +3,16 @@ import { connect } from "react-redux";
 
 class UsersQuestions extends Component {
   render() {
+    console.log(this.props.question);
     return (
       <div>
         <div>
           <ul>
-            {this.props.question === undefined
-              ? ""
-              : this.props.question.map(quest =>
-                  this.props.questions[quest] === undefined
-                    ? ""
-                    : this.props.questions[quest].optionTwo.text.substring(0, 8)
-                )}
+            {this.props.question.map(quest =>
+              this.props.questions[quest] === undefined
+                ? ""
+                : this.props.questions[quest].optionTwo.text.substring(0, 8)
+            )}
           </ul>
         </div>
       </div>

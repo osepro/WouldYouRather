@@ -7,11 +7,10 @@ class PlayerProfile extends Component {
     this.props.history.push(`/users/${id}`);
   };
   render() {
-    console.log(this.props.notanswered[0]);
     return (
       <div>
         <div align="center">
-          <div className="paper">
+          <div className="paper-1">
             <p
               onClick={() => this.bachHome(this.props.id)}
               className="homeLink"
@@ -21,9 +20,9 @@ class PlayerProfile extends Component {
             {Object.keys(this.props.users)
               .filter(user => this.props.users[user].id === this.props.id)
               .map((key, i) => (
-                <div className="playerProfile-inner" key={i}>
+                <div className="playerProfile-inner-2" key={i}>
                   <h4 className="header-profile">
-                    {this.props.users[key].name} asks:
+                    Asked by {this.props.users[key].name}
                   </h4>
                   <div className="mainDetails">
                     <div
@@ -34,36 +33,22 @@ class PlayerProfile extends Component {
                       }}
                     ></div>
                     <div className="profileContent">
-                      <h2 className="would-header">Would You Rather...</h2>
-                      <div>
-                        <form>
-                          {
-                            //this.props.notanswered.map((quest, i) => (
-                            <div className="listProfile" key={i}>
-                              <input
-                                type="radio"
-                                name="one"
-                                value={this.props.notanswered[0].optionOne.text}
-                              />
-                              <label htmlFor="one">
-                                {this.props.notanswered[0].optionOne.text}
-                              </label>
-                              <br />
-                              <input
-                                type="radio"
-                                name="one"
-                                value={this.props.notanswered[0].optionTwo.text}
-                              />
-                              <label htmlFor="one">
-                                {this.props.notanswered[0].optionTwo.text}
-                              </label>
-                              <br />
-                            </div>
-                            //))
-                          }
-
-                          <button className="view-rather">Submit</button>
-                        </form>
+                      <h2 className="would-header">Results:</h2>
+                      <div className="topOne">
+                        <h1>Would you do this</h1>
+                        <div className="main-outter">
+                          <div className="innner-pro">
+                            <p className="counting">50%</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="topTwo">
+                        <h1>Would you do this</h1>
+                        <div class="main-outter">
+                          <div class="innner-pro">
+                            <p class="counting">50%</p>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
