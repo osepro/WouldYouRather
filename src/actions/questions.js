@@ -1,5 +1,6 @@
-import { saveQuestion } from "../utils/api";
-import { QUESTIONS } from "../constants";
+import { saveQuestionAnswer } from "../utils/api";
+import { QUESTIONS, VOTE } from "../constants";
+import { showLoading, hideLoading } from "react-redux-loading";
 
 export function allquestions(question) {
   return {
@@ -8,18 +9,22 @@ export function allquestions(question) {
   };
 }
 
-export function saveQuest(data) {
-  /*return (dispatch, getState) => {
-    const { authedUser } = getState();
+export function addVote({ authedUser, qid, answer }) {
+  return {
+    type: VOTE,
+    vote: { authedUser, qid, answer }
+  };
+}
 
+export function saveVote({ qid, answer, id }) {
+  return dispatch => {
+    const authedUser = id;
     dispatch(showLoading());
 
-    return saveQuestion({
-      text,
-      author: authedUser,
-      replyingTo
-    })
-      .then(tweet => dispatch(addTweet(tweet)))
-      .then(() => dispatch(hideLoading()));
-  };*/
+    const data = { authedUser, qid, answer };
+    dispatch(addVote(data));
+    return saveQuestionAnswer({ authedUser, qid, answer })
+      .then(() => dispatch(hideLoading()))
+      .catch(e => console.log("error found ", e));
+  };
 }

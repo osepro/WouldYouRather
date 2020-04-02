@@ -8,16 +8,10 @@ class Players extends Component {
     if (id === profileId) {
       this.props.history.push(`/profile/${id}`);
     } else {
-      this.props.history.push(`/scoreboard/${profileId}`);
+      alert("You can't access this account");
     }
   };
   render() {
-    console.log(this.props.questions);
-    console.log(this.props.users);
-    console.log(this.props.loggediduser);
-    console.log(this.props.id);
-    console.log(this.props.answered);
-    console.log(this.props.notanswered);
     return (
       <div>
         <div>
