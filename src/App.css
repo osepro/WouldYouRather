@@ -71,7 +71,7 @@ body {
   background-color: #ffffff;
   border-radius: 5px 5px 5px 5px;
   width: 40%;
-  height: 425px;
+  min-height: 500px;
 }
 
 .textTop {
@@ -267,32 +267,57 @@ h2.would-header {
   cursor: pointer;
 }
 
-.topOne {
-  border: solid 3px #3bfebb;
-  border-radius: 5px;
-  min-height: 100px;
-  margin: 5px 10px 15px 10px;
-  background-color: #eee;
-  padding-bottom: 10px;
-}
-
+.topOne,
 .topTwo {
   border: solid 3px #3bfebb;
   border-radius: 5px;
   min-height: 100px;
   margin: 5px 10px 15px 10px;
   padding-bottom: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.yourvoteone {
+  background-color: #FFA500;
+  border-radius: 40px;
+  border: solid 1px #FFF;
+  padding: 10px;
+  width: 10%;
+  color: #FFF;
+  font-weight: bold;
+  font-size: 12px;
+  float: right;
+  margin-top: -17px;
+}
+
+.yourvotetwo {
+  background-color: #FFA500;
+  border-radius: 40px;
+  border: solid 1px #FFF;
+  padding: 10px;
+  width: 10%;
+  color: #FFF;
+  font-weight: bold;
+  font-size: 12px;
+  float: right;
+  margin-top: 155px;
 }
 
 .main-outter {
   height: 30px;
-  background: #333;
+  background: #cccccc;
+  border-radius: 5px;
+  font-weight: bold;
 }
 
 .innner-pro {
-  width: 50px;
+  width: auto;
   height: 100%;
-  background: green;
+  background: #20B2AA;
+  text-align: right;
+  padding-right: 5px;
+  border-radius: 5px;
 }
 
 .counting {

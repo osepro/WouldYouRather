@@ -1,13 +1,36 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { saveVote } from "../actions/questions";
 import "../App.css";
 
 class PlayerProfile extends Component {
+  state = {
+    choice: "",
+    choidid: ""
+  };
   bachHome = id => {
-    this.props.history.push(`/users/${id}`);
+    this.props.history.push(`/scoreboard/${id}`);
+  };
+
+  handleChange = e => {
+    this.setState({
+      choice: e.target.value,
+      choiceid: e.target.dataset.questid
+    });
+  };
+
+  handleVote = e => {
+    e.preventDefault();
+    const qid = this.state.choiceid;
+    const answer = this.state.choice;
+    const { dispatch, id } = this.props;
+    dispatch(saveVote({ qid, answer, id }));
+    this.props.history.push(`/scoreboard/${id}/${qid}`);
+  };
+  goScoreBoard = id => {
+    this.props.history.push(`/profile/${id}`);
   };
   render() {
-    console.log(this.props.notanswered[0]);
     return (
       <div>
         <div align="center">
@@ -36,34 +59,41 @@ class PlayerProfile extends Component {
                     <div className="profileContent">
                       <h2 className="would-header">Would You Rather...</h2>
                       <div>
-                        <form>
-                          {
-                            //this.props.notanswered.map((quest, i) => (
-                            <div className="listProfile" key={i}>
-                              <input
-                                type="radio"
-                                name="one"
-                                value={this.props.notanswered[0].optionOne.text}
-                              />
-                              <label htmlFor="one">
-                                {this.props.notanswered[0].optionOne.text}
-                              </label>
-                              <br />
-                              <input
-                                type="radio"
-                                name="one"
-                                value={this.props.notanswered[0].optionTwo.text}
-                              />
-                              <label htmlFor="one">
-                                {this.props.notanswered[0].optionTwo.text}
-                              </label>
-                              <br />
-                            </div>
-                            //))
-                          }
+                        {
+                          //this.props.notanswered.map((quest, i) => (
+                          <div className="listProfile" key={i}>
+                            <input
+                              type="radio"
+                              name="one"
+                              value={"optionOne"}
+                              data-questid={this.props.notanswered[0].id}
+                              onChange={this.handleChange}
+                            />
+                            <label htmlFor="one">
+                              {this.props.notanswered[0].optionOne.text}
+                            </label>
+                            <br />
+                            <input
+                              type="radio"
+                              name="one"
+                              value={"optionTwo"}
+                              data-questid={this.props.notanswered[0].id}
+                              onChange={this.handleChange}
+                            />
+                            <label htmlFor="one">
+                              {this.props.notanswered[0].optionTwo.text}
+                            </label>
+                            <br />
+                          </div>
+                          //))
+                        }
 
-                          <button className="view-rather">Submit</button>
-                        </form>
+                        <button
+                          onClick={this.handleVote}
+                          className="view-rather"
+                        >
+                          Submit
+                        </button>
                       </div>
                     </div>
                   </div>

@@ -27,7 +27,7 @@ class App extends Component {
               <Route path="/users/:id" component={Players} />
               <Route path="/newquestions" component={NewQuestions} />
               <Route path="/profile/:id" component={PlayerProfile} />
-              <Route path="/scoreboard/:id" component={ScoreBoard} />
+              <Route path="/scoreboard/:id/:qid" component={ScoreBoard} />
             </div>
           )}
         </Fragment>

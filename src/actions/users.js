@@ -1,4 +1,4 @@
-import { USERS } from "../constants";
+import { USERS, VOTE } from "../constants";
 
 export function allusers(users) {
   return {
@@ -6,3 +6,10 @@ export function allusers(users) {
     users
   };
 }
+
+/*export function voteoption({ authedUser, qid, answer }) {
+  return {
+    type: VOTE,
+    vote: { authedUser, qid, answer }
+  };
+}*/
