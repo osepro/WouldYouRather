@@ -128,12 +128,38 @@ select#users option[value="johndoe"] {
   margin-right: 10px;
   list-style: none;
   margin-left: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  border-right: solid 1px #cccccc;
+  padding: 10px;
 }
 
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 0px;
+  background-color: #ffffff;
+  border-bottom: solid 2px #ccc;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.item {
+  padding: 10px;
+}
+
+.item:nth-child(odd) {
+  border-right: 1px solid #ccc;
+}
+
+.active {
+  color: #20B2AA;
+  background-color: #eee;
+}
 
 .headerPlay {
-  padding: 10px 5px 10px 5px;
-  min-height: 40px;
+  /* padding: 10px 5px 10px 5px;
+  min-height: 40px; */
 }
 
 .playerProfile {
@@ -201,7 +227,7 @@ h2.would-header {
 
 .view-button {
   padding: 10px;
-  border: solid 1px #3bfebb;
+  border: solid 1px #20B2AA;
   border-radius: 5px;
   width: 280px;
   color: #333333;
@@ -211,10 +237,10 @@ h2.would-header {
 
 .view-rather {
   padding: 10px;
-  border: solid 1px #3bfebb;
+  border: solid 1px #20B2AA;
   border-radius: 5px;
   width: 292px;
-  background-color: #3bfebb;
+  background-color: #20B2AA;
   cursor: pointer;
   color: #000;
   font-weight: bold;
@@ -262,7 +288,7 @@ h2.would-header {
 
 .homeLink {
   font-size: 14px;
-  color: #3bfebb;
+  color: #20B2AA;
   font-weight: bold;
   cursor: pointer;
 }
