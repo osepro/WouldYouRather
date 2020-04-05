@@ -17,7 +17,8 @@ class UserLogIn extends Component {
     });
   };
 
-  handleSubmit = () => {
+  handleSubmit = e => {
+    e.preventDefault();
     const { dispatch } = this.props;
     dispatch(userloggedin(this.state.selectVal));
     this.props.history.push(`/users/${this.state.selectVal}`);
