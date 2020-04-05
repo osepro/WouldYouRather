@@ -1,4 +1,4 @@
-import { QUESTIONS, VOTE } from "../constants";
+import { QUESTIONS, VOTE, SAVE_QUESTIONS } from "../constants";
 
 const initialState = {};
 
@@ -7,7 +7,7 @@ function questions(state = initialState, action) {
     case QUESTIONS:
       return {
         ...state,
-        ...action.question
+        ...action.question,
       };
     case VOTE:
       const { qid, answer, authedUser } = action.vote;
@@ -18,9 +18,15 @@ function questions(state = initialState, action) {
           ...state[qid],
           [answer]: {
             ...state[qid][answer],
-            votes: state[qid][answer].votes.concat([authedUser])
-          }
-        }
+            votes: state[qid][answer].votes.concat([authedUser]),
+          },
+        },
+      };
+    case SAVE_QUESTIONS:
+      const { id } = action.question;
+      return {
+        ...state,
+        [id]: action.question,
       };
     default:
       return state;

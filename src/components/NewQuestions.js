@@ -1,17 +1,31 @@
 import React, { Component } from "react";
 import "../App.css";
 import { connect } from "react-redux";
+import { createNewQuestion } from "../actions/questions";
 
-class UserLogIn extends Component {
+class NewQuestions extends Component {
   state = {
-    login: false
+    optionOneText: "",
+    optionTwoText: "",
+  };
+  onInputChange = (e) => {
+    e.preventDefault();
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
   };
   handleSubmit = () => {
-    if (this.refs.selectUser) {
-      this.setState({
-        login: true
-      });
-    }
+    const { optionOneText, optionTwoText } = this.state;
+    const { dispatch, id } = this.props;
+    dispatch(createNewQuestion({ id, optionOneText, optionTwoText }));
+
+    this.setState(
+      {
+        optionOneText: "",
+        optionTwoText: "",
+      },
+      () => this.props.history.push(`/users/${id}`)
+    );
   };
 
   render() {
@@ -28,8 +42,11 @@ class UserLogIn extends Component {
                 type="text"
                 placeholder="Enter Option One Text Here"
                 className="inputBox"
+                onChange={this.onInputChange}
+                name="optionOneText"
+                value={this.state.optionOneText}
               />
-              <div class="container">
+              <div className="container">
                 <h2 className="orLine">Or</h2>
                 <div className="line"></div>
               </div>
@@ -37,6 +54,9 @@ class UserLogIn extends Component {
                 type="text"
                 placeholder="Enter Option Two Text Here"
                 className="inputBox"
+                onChange={this.onInputChange}
+                name="optionTwoText"
+                value={this.state.optionTwoText}
               />
               <button className="submit" onClick={this.handleSubmit}>
                 Submit
@@ -50,10 +70,12 @@ class UserLogIn extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = ({ users }, props) => {
+  const { id } = props.match.params;
   return {
-    users: state.users
+    users: users,
+    id,
   };
 };
 
-export default connect(mapStateToProps)(UserLogIn);
+export default connect(mapStateToProps)(NewQuestions);

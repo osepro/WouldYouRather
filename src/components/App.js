@@ -25,7 +25,7 @@ class App extends Component {
             <div>
               <Route path="/" exact component={UserLogIn} />
               <Route path="/users/:id" component={Players} />
-              <Route path="/newquestions" component={NewQuestions} />
+              <Route path="/newquestions/:id" component={NewQuestions} />
               <Route path="/profile/:id" component={PlayerProfile} />
               <Route path="/scoreboard/:id/:qid" component={ScoreBoard} />
             </div>
@@ -36,9 +36,9 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    loading: state.users === null
+    loading: state.users === null,
   };
 };
 

@@ -1,23 +1,44 @@
-import { saveQuestionAnswer } from "../utils/api";
-import { QUESTIONS, VOTE } from "../constants";
+import { saveQuestionAnswer, saveQuestion } from "../utils/api";
+import { QUESTIONS, VOTE, SAVE_QUESTIONS } from "../constants";
 import { showLoading, hideLoading } from "react-redux-loading";
 
 export function allquestions(question) {
   return {
     type: QUESTIONS,
-    question
+    question,
   };
 }
 
 export function addVote({ authedUser, qid, answer }) {
   return {
     type: VOTE,
-    vote: { authedUser, qid, answer }
+    vote: { authedUser, qid, answer },
+  };
+}
+
+export function saveNewQuestion(question) {
+  return {
+    type: SAVE_QUESTIONS,
+    question,
+  };
+}
+
+export function createNewQuestion({ id, optionOneText, optionTwoText }) {
+  return (dispatch) => {
+    const author = id;
+    dispatch(showLoading());
+
+    const data = { author, optionOneText, optionTwoText };
+    //dispatch(saveNewQuestion(data));
+    return saveQuestion({ author, optionOneText, optionTwoText })
+      .then((question) => dispatch(saveNewQuestion(question)))
+      .then(() => dispatch(hideLoading()))
+      .catch((e) => console.log("error occured ", e));
   };
 }
 
 export function saveVote({ qid, answer, id }) {
-  return dispatch => {
+  return (dispatch) => {
     const authedUser = id;
     dispatch(showLoading());
 
@@ -25,6 +46,6 @@ export function saveVote({ qid, answer, id }) {
     dispatch(addVote(data));
     return saveQuestionAnswer({ authedUser, qid, answer })
       .then(() => dispatch(hideLoading()))
-      .catch(e => console.log("error found ", e));
+      .catch((e) => console.log("error occured ", e));
   };
 }

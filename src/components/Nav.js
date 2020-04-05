@@ -6,7 +6,7 @@ import { Link, withRouter } from "react-router-dom";
 
 class Nav extends Component {
   state = {
-    loggedIn: "loggedin"
+    loggedIn: "loggedin",
   };
   handleLogout = () => {
     const { dispatch } = this.props;
@@ -24,7 +24,11 @@ class Nav extends Component {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/newquestions" exact activeClassName="active">
+                <NavLink
+                  to={`/newquestions/${this.props.loggediduser}`}
+                  exact
+                  activeClassName="active"
+                >
                   New Question
                 </NavLink>
               </li>
@@ -36,7 +40,7 @@ class Nav extends Component {
             : !this.props.users
             ? ""
             : Object.keys(this.props.users)
-                .filter(user => user === this.props.loggediduser)
+                .filter((user) => user === this.props.loggediduser)
                 .map((user, i) => (
                   <div key={i} className="userprofileInfo">
                     <ul className="userprofileInfoList">
@@ -46,7 +50,7 @@ class Nav extends Component {
                           className="userprofilePix"
                           style={{
                             backgroundImage: `url(${this.props.users[user].avatarURL})`,
-                            backgroundSize: "25px 25px"
+                            backgroundSize: "25px 25px",
                           }}
                         ></div>
                       </li>
@@ -65,7 +69,7 @@ class Nav extends Component {
 function mapStateToProps({ users, userloggedin }) {
   return {
     users: users,
-    loggediduser: userloggedin
+    loggediduser: userloggedin,
   };
 }
 
