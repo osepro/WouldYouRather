@@ -3,11 +3,10 @@ import { connect } from "react-redux";
 import "../App.css";
 
 class PlayerProfile extends Component {
-  bachHome = id => {
+  bachHome = (id) => {
     this.props.history.push(`/users/${id}`);
   };
   render() {
-    console.log(this.props.choiceOption);
     return (
       <div>
         <div align="center">
@@ -16,7 +15,7 @@ class PlayerProfile extends Component {
           </p>
           <div className="paper-1">
             {Object.keys(this.props.users)
-              .filter(user => this.props.users[user].id === this.props.id)
+              .filter((user) => this.props.users[user].id === this.props.id)
               .map((key, i) => (
                 <div className="playerProfile-inner-2" key={i}>
                   <h4 className="header-profile">
@@ -27,7 +26,7 @@ class PlayerProfile extends Component {
                       className="profilePix"
                       style={{
                         backgroundImage: `url(${this.props.users[key].avatarURL})`,
-                        backgroundSize: "105px 105px"
+                        backgroundSize: "105px 105px",
                       }}
                     ></div>
                     <div className="profileContent">
@@ -44,7 +43,7 @@ class PlayerProfile extends Component {
                             this.props.choiceOption === "optionOne"
                               ? "#7FFFD4"
                               : "",
-                          color: "#20B2AA"
+                          color: "#20B2AA",
                         }}
                       >
                         <h4>Would you rather {this.props.OptionOne.text}</h4>
@@ -52,7 +51,7 @@ class PlayerProfile extends Component {
                           <div
                             className="innner-pro"
                             style={{
-                              width: this.props.OptionOneTotal + "%"
+                              width: this.props.OptionOneTotal + "%",
                             }}
                           >
                             <p className="counting">
@@ -60,7 +59,7 @@ class PlayerProfile extends Component {
                             </p>
                           </div>
                         </div>
-                        <p style={{color: "#000"}}>
+                        <p style={{ color: "#000" }}>
                           <strong>
                             {this.props.OptionOne.votes.length} out of
                             {this.props.total} votes
@@ -73,7 +72,7 @@ class PlayerProfile extends Component {
                           backgroundColor:
                             this.props.choiceOption === "optionTwo"
                               ? "#7FFFD4"
-                              : ""
+                              : "",
                         }}
                       >
                         <h4>Would you rather {this.props.OptionTwo.text}</h4>
@@ -81,7 +80,7 @@ class PlayerProfile extends Component {
                           <div
                             className="innner-pro"
                             style={{
-                              width: this.props.OptionTwoTotal + "%"
+                              width: this.props.OptionTwoTotal + "%",
                             }}
                           >
                             <p className="counting">
@@ -89,7 +88,7 @@ class PlayerProfile extends Component {
                             </p>
                           </div>
                         </div>
-                        <p style={{color: "#000"}}>
+                        <p style={{ color: "#000" }}>
                           <strong>
                             {this.props.OptionTwo.votes.length} out of
                             {this.props.total} votes
@@ -112,10 +111,8 @@ function mapStateToProps({ users, questions }, props) {
 
   let total = [
     ...questions[qid].optionOne.votes,
-    ...questions[qid].optionTwo.votes
+    ...questions[qid].optionTwo.votes,
   ].length;
-
-  console.log(questions[qid]);
 
   const checkOptionChoice = () => {
     if (questions[qid].optionOne.votes.includes(id)) {
@@ -146,7 +143,7 @@ function mapStateToProps({ users, questions }, props) {
     OptionOneTotal,
     OptionTwoTotal,
     total,
-    choiceOption: checkOptionChoice()
+    choiceOption: checkOptionChoice(),
   };
 }
 

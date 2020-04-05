@@ -14,7 +14,6 @@ class AnsweredQuestions extends Component {
     this.props.history.push(`/scoreboard/${id}/${qid}`);
   };
   render() {
-    console.log(this.props.users["sarahedo"].questions[0]);
     return (
       <div>
         {Object.keys(this.props.users).map((key, i) => (
