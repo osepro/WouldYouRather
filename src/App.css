@@ -169,6 +169,13 @@ select#users option[value="johndoe"] {
   margin: 5px 10px 15px 10px;
 }
 
+.leaderProfile {
+  border: solid 3px #eee;
+  border-radius: 5px;
+  min-height: 180px;
+  margin: 5px 10px 15px 10px;
+}
+
 .playerProfile-inner {
   border: solid 3px #eee;
   border-radius: 5px;
@@ -189,6 +196,54 @@ select#users option[value="johndoe"] {
   border-radius: 60px;
   float: left;
   border: solid 5px #FFF;
+}
+
+.leaderPix {
+  width: 105px;
+  height: 105px;
+  border-radius: 60px;
+  border: solid 5px #FFF;
+}
+
+.leaderName {
+  margin-top: 0;
+}
+
+.leaderList {
+  padding: 0;
+  margin-top: 0;
+}
+
+.leaderScore {
+  border: solid 1px #eee;
+  border-radius: 5px;
+}
+
+.leaderList li {
+  list-style: none;
+  padding-top: 12%;
+  padding-bottom: 12%;
+}
+
+.topList {
+  background-color: #eee;
+  border-bottom: solid 1px #ccc;
+  font-size: 18px;
+}
+
+.bottomList {
+  border-radius: 34px;
+  background-color: #20B2AA;
+  width: 68px;
+  color: #fff;
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 28px;
+}
+
+.mainCenter {
+  border-right: solid 1px #eee;
+  border-left: solid 1px #eee;
 }
 
 .profileContent {
@@ -349,6 +404,24 @@ h2.would-header {
 .counting {
   color: #FFF;
   padding-top: 6px;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: 120px auto 120px;
+  grid-gap: 10px;
+}
+
+.gridContainerRes {
+  display: grid;
+  grid-template-columns: 140px auto;
+  text-align: left;
+  padding-left: 10%;
+  padding-right: 12%;
+}
+
+.topAns {
+  border-bottom: solid 1px #eee;
 }
 
 @media (prefers-reduced-motion: no-preference) {

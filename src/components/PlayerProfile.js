@@ -8,7 +8,7 @@ class PlayerProfile extends Component {
     choice: "",
     choidid: "",
   };
-  bachHome = (id) => {
+  backHome = (id) => {
     this.props.history.push(`/users/${id}`);
   };
 
@@ -33,7 +33,7 @@ class PlayerProfile extends Component {
         <div align="center">
           <div className="paper">
             <p
-              onClick={() => this.bachHome(this.props.id)}
+              onClick={() => this.backHome(this.props.id)}
               className="homeLink"
             >
               Back Home

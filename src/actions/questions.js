@@ -28,8 +28,6 @@ export function createNewQuestion({ id, optionOneText, optionTwoText }) {
     const author = id;
     dispatch(showLoading());
 
-    const data = { author, optionOneText, optionTwoText };
-    //dispatch(saveNewQuestion(data));
     return saveQuestion({ author, optionOneText, optionTwoText })
       .then((question) => dispatch(saveNewQuestion(question)))
       .then(() => dispatch(hideLoading()))
