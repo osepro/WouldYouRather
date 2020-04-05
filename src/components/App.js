@@ -5,6 +5,7 @@ import Players from "./Players";
 import NewQuestions from "./NewQuestions";
 import PlayerProfile from "./PlayerProfile";
 import ScoreBoard from "./ScoreBoard";
+import LeaderBoard from "./LeaderBoard";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { handleUsersLoad } from "../actions";
@@ -28,6 +29,7 @@ class App extends Component {
               <Route path="/newquestions/:id" component={NewQuestions} />
               <Route path="/profile/:id" component={PlayerProfile} />
               <Route path="/scoreboard/:id/:qid" component={ScoreBoard} />
+              <Route path="/leaderboard/:id" component={LeaderBoard} />
             </div>
           )}
         </Fragment>

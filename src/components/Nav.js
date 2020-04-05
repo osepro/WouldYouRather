@@ -32,7 +32,15 @@ class Nav extends Component {
                   New Question
                 </NavLink>
               </li>
-              <li>Leader Board</li>
+              <li>
+                <NavLink
+                  to={`/leaderboard/${this.props.loggediduser}`}
+                  exact
+                  activeClassName="active"
+                >
+                  Leader Board
+                </NavLink>
+              </li>
             </ul>
           </div>
           {this.props.loggediduser === null
