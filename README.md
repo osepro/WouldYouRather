@@ -131,8 +131,8 @@ _Parameters_: Object that contains the following properties: `authedUser`, `qid`
 
 ## Contributing
 
-![README Image](https://github.com/osepro/MyRead/blob/master/readmeImg/screen_shot_login.png)
+![README Image](https://github.com/osepro/MyRead/blob/master/readmeImg/screen_shot_login.png).
 
-![README Image](https://github.com/osepro/MyRead/blob/master/readmeImg/screen_shot_inner.png)
+![README Image](https://github.com/osepro/MyRead/blob/master/readmeImg/screen_shot_inner.png).
 
-![README Image](https://github.com/osepro/MyRead/blob/master/readmeImg/screen_shot_vote.png)
+![README Image](https://github.com/osepro/MyRead/blob/master/readmeImg/screen_shot_vote.png).
