@@ -6,18 +6,18 @@ import { connect } from "react-redux";
 
 class UserLogIn extends Component {
   state = {
-    selectVal: ""
+    selectVal: null,
   };
 
-  handleSelect = e => {
+  handleSelect = (e) => {
     e.preventDefault();
     const id = e.target.value;
     this.setState({
-      selectVal: id
+      selectVal: id,
     });
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
     const { dispatch } = this.props;
     dispatch(userloggedin(this.state.selectVal));
@@ -53,14 +53,14 @@ class UserLogIn extends Component {
                     <option>Select User</option>
                     {!this.props.users
                       ? ""
-                      : Object.keys(this.props.users).map(key => (
+                      : Object.keys(this.props.users).map((key) => (
                           <option
                             key={this.props.users[key].id}
                             value={this.props.users[key].id}
                             style={{
                               backgroundImage: `url(${this.props.users[key].avatarURL})`,
                               backgroundSize: "15px 15px",
-                              float: "left"
+                              float: "left",
                             }}
                           >
                             {this.props.users[key].name}
@@ -79,10 +79,10 @@ class UserLogIn extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     users: state.users,
-    questions: state.questions
+    questions: state.questions,
   };
 };
 

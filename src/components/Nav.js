@@ -19,7 +19,7 @@ class Nav extends Component {
           <div align="center" className="divLeft">
             <ul className="navList">
               <li>
-                <NavLink to="/" exact activeClassName="active">
+                <NavLink to="/" exact activeClassName="active-nav">
                   Home
                 </NavLink>
               </li>
@@ -27,7 +27,7 @@ class Nav extends Component {
                 <NavLink
                   to={`/newquestions/${this.props.loggediduser}`}
                   exact
-                  activeClassName="active"
+                  activeClassName="active-nav"
                 >
                   New Question
                 </NavLink>
@@ -36,7 +36,7 @@ class Nav extends Component {
                 <NavLink
                   to={`/leaderboard/${this.props.loggediduser}`}
                   exact
-                  activeClassName="active"
+                  activeClassName="active-nav"
                 >
                   Leader Board
                 </NavLink>
