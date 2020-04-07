@@ -152,16 +152,6 @@ select#users option[value="johndoe"] {
   border-right: 1px solid #ccc;
 }
 
-.active {
-  color: #20B2AA;
-  background-color: #eee;
-}
-
-.headerPlay {
-  /* padding: 10px 5px 10px 5px;
-  min-height: 40px; */
-}
-
 .playerProfile {
   border: solid 3px #eee;
   border-radius: 5px;
@@ -306,11 +296,24 @@ h2.would-header {
   list-style: none;
   margin-left: 10px;
   float: left;
+  width: 117px;
+}
+
+.navList li a {
+  text-decoration: none;
+  padding-left: 20%;
+  color: #333333;
+}
+
+.active {
+  color: #FFFFFF;
+  background-color: #20B2AA;
+  height: 200px;
 }
 
 .divLeft {
   float: left;
-  width: 300px;
+  width: 500px;
   margin-top: 7px;
 }
 
@@ -319,6 +322,7 @@ h2.would-header {
   min-height: 64px;
   padding-left: 24px;
   padding-right: 24px;
+  border-bottom: solid 2px #20B2AA;
 }
 
 .userprofileInfo {
