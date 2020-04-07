@@ -133,6 +133,6 @@ _Parameters_: Object that contains the following properties: `authedUser`, `qid`
 
 ![README Image](https://github.com/osepro/WouldYouRather/blob/master/readmeImg/screen_shot_login.png)
 
-![README Image](https://github.com/osepro/WouldYouRather/blob/master/readmeImg/screen_shot_inner.png)
+![README Image](https://github.com/osepro/WouldYouRather/blob/master/readmeImg/screenshot_inner.png)
 
 ![README Image](https://github.com/osepro/WouldYouRather/blob/master/readmeImg/screen_shot_vote.png)
