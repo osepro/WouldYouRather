@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import UsersQuestions from "./UsersQuestions";
+import { connect } from "react-redux";
 
 class UnAnsweredQuestions extends Component {
   render() {
@@ -22,20 +23,12 @@ class UnAnsweredQuestions extends Component {
                 <h4 className="would-header">Would you rather</h4>
                 <div>
                   ...
-                  <UsersQuestions question={this.props.users[key].questions} />
+                  <UsersQuestions
+                    question={this.props.users[key].questions}
+                    userid={this.props.users[key].id}
+                  />
                   ...
                 </div>
-                <button
-                  className="view-button"
-                  onClick={() =>
-                    this.props.viewPoll(
-                      this.props.loggediduser,
-                      this.props.users[key].id
-                    )
-                  }
-                >
-                  View Poll
-                </button>
               </div>
             </div>
           </div>
@@ -45,4 +38,11 @@ class UnAnsweredQuestions extends Component {
   }
 }
 
-export default UnAnsweredQuestions;
+function mapStateToProps({ users, userloggedin }) {
+  return {
+    loggediduser: userloggedin,
+    users,
+  };
+}
+
+export default connect(mapStateToProps)(UnAnsweredQuestions);

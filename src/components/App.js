@@ -6,6 +6,8 @@ import NewQuestions from "./NewQuestions";
 import PlayerProfile from "./PlayerProfile";
 import ScoreBoard from "./ScoreBoard";
 import LeaderBoard from "./LeaderBoard";
+import PrivateRoute from "./PrivateRoute";
+import ErrorPage from "./ErrorPage";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { handleUsersLoad } from "../actions";
@@ -25,11 +27,15 @@ class App extends Component {
           {this.props.loading === true ? null : (
             <div>
               <Route path="/" exact component={UserLogIn} />
-              <Route path="/users/:id" component={Players} />
-              <Route path="/newquestions/:id" component={NewQuestions} />
-              <Route path="/profile/:id" component={PlayerProfile} />
-              <Route path="/scoreboard/:id/:qid" component={ScoreBoard} />
-              <Route path="/leaderboard/:id" component={LeaderBoard} />
+              <Route path="/users/" component={Players} />
+              <Route path="/newquestions/" component={NewQuestions} />
+              <Route path="/scoreboard/:qid" component={ScoreBoard} />
+              <Route path="/leaderboard/" component={LeaderBoard} />
+              <Route path="/404/" component={ErrorPage} />
+              <PrivateRoute
+                path="/questions/:question_id"
+                component={PlayerProfile}
+              />
             </div>
           )}
         </Fragment>

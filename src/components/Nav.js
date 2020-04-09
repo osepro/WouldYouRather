@@ -10,7 +10,7 @@ class Nav extends Component {
   };
   handleLogout = () => {
     const { dispatch } = this.props;
-    dispatch(userloggedin(""));
+    dispatch(userloggedin(null));
   };
   render() {
     return (
@@ -19,13 +19,17 @@ class Nav extends Component {
           <div align="center" className="divLeft">
             <ul className="navList">
               <li>
-                <NavLink to="/" exact activeClassName="active-nav">
+                <NavLink
+                  to={`${this.props.loggediduser ? `/users/` : "/"}`}
+                  exact
+                  activeClassName="active-nav"
+                >
                   Home
                 </NavLink>
               </li>
               <li>
                 <NavLink
-                  to={`/newquestions/${this.props.loggediduser}`}
+                  to={`/newquestions/`}
                   exact
                   activeClassName="active-nav"
                 >
@@ -34,7 +38,7 @@ class Nav extends Component {
               </li>
               <li>
                 <NavLink
-                  to={`/leaderboard/${this.props.loggediduser}`}
+                  to={`/leaderboard/`}
                   exact
                   activeClassName="active-nav"
                 >

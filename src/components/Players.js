@@ -8,13 +8,6 @@ class Players extends Component {
   state = {
     currentView: true,
   };
-  viewPoll = (id, profileId) => {
-    if (id === profileId) {
-      this.props.history.push(`/profile/${id}`);
-    } else {
-      alert("You can't access this account");
-    }
-  };
 
   changeQuestions = (quest) => {
     this.setState({
@@ -43,19 +36,9 @@ class Players extends Component {
                 </div>
               </div>
               {this.state.currentView ? (
-                <UnAnsweredQuestions
-                  users={this.props.users}
-                  loggediduser={this.props.loggediduser}
-                  viewPoll={this.viewPoll}
-                  notanswered={this.props.notanswered}
-                />
+                <UnAnsweredQuestions />
               ) : (
-                <AnsweredQuestions
-                  users={this.props.users}
-                  loggediduser={this.props.loggediduser}
-                  viewPoll={this.viewPoll}
-                  answered={this.props.answered}
-                />
+                <AnsweredQuestions />
               )}
             </div>
           </div>
@@ -65,9 +48,8 @@ class Players extends Component {
   }
 }
 
-function mapStateToProps({ users, questions, userloggedin }, props) {
-  const { id } = props.match.params;
-  const answeredquest = Object.keys(users[id].answers);
+function mapStateToProps({ users, questions, userloggedin }) {
+  const answeredquest = Object.keys(users[userloggedin].answers);
 
   const answered = Object.values(questions)
     .filter((question) => answeredquest.includes(question.id))
@@ -78,12 +60,12 @@ function mapStateToProps({ users, questions, userloggedin }, props) {
     .sort((a, b) => b.timestamp - a.timestamp);
 
   return {
-    id,
+    id: userloggedin,
     users: users,
     questions: questions,
     loggediduser: userloggedin,
     answered,
-    notanswered,
+    notanswered: notanswered[0],
   };
 }
 
