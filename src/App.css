@@ -29,7 +29,8 @@ body {
   margin-bottom: 20;
 }
 
-.header-profile {}
+.header-profile {
+}
 
 .submit {
   margin: 3px 0 2px;
@@ -122,6 +123,12 @@ select#users option[value="tylermcginnis"] {
 select#users option[value="johndoe"] {
   background-image: url("https://tylermcginnis.com/would-you-rather/dan.jpg");
 }
+.header-error {
+  font-size: medium;
+}
+.header-error a {
+  color: #20b2aa;
+}
 
 .questionHeader li {
   float: left;
@@ -185,14 +192,14 @@ select#users option[value="johndoe"] {
   height: 105px;
   border-radius: 60px;
   float: left;
-  border: solid 5px #FFF;
+  border: solid 5px #fff;
 }
 
 .leaderPix {
   width: 105px;
   height: 105px;
   border-radius: 60px;
-  border: solid 5px #FFF;
+  border: solid 5px #fff;
 }
 
 .leaderName {
@@ -223,7 +230,7 @@ select#users option[value="johndoe"] {
 
 .bottomList {
   border-radius: 34px;
-  background-color: #20B2AA;
+  background-color: #20b2aa;
   width: 68px;
   color: #fff;
   margin-top: 20px;
@@ -272,7 +279,7 @@ h2.would-header {
 
 .view-button {
   padding: 10px;
-  border: solid 1px #20B2AA;
+  border: solid 1px #20b2aa;
   border-radius: 5px;
   width: 280px;
   color: #333333;
@@ -282,10 +289,10 @@ h2.would-header {
 
 .view-rather {
   padding: 10px;
-  border: solid 1px #20B2AA;
+  border: solid 1px #20b2aa;
   border-radius: 5px;
   width: 292px;
-  background-color: #20B2AA;
+  background-color: #20b2aa;
   cursor: pointer;
   color: #000;
   font-weight: bold;
@@ -307,13 +314,13 @@ h2.would-header {
 }
 
 .active {
-  color: #20B2AA;
+  color: #20b2aa;
   background-color: #eee;
 }
 
 .active-nav {
-  color: #FFFFFF !important;
-  background-color: #20B2AA;
+  color: #ffffff !important;
+  background-color: #20b2aa;
   padding-top: 12px;
   padding-bottom: 25px;
   border-radius: 10px 10px 0 0;
@@ -334,7 +341,7 @@ h2.would-header {
   min-height: 64px;
   padding-left: 24px;
   padding-right: 24px;
-  border-bottom: solid 2px #20B2AA;
+  border-bottom: solid 2px #20b2aa;
 }
 
 .userprofileInfo {
@@ -358,12 +365,12 @@ h2.would-header {
   height: 25px;
   border-radius: 50px;
   float: left;
-  border: solid 1px #FFF;
+  border: solid 1px #fff;
 }
 
 .homeLink {
   font-size: 14px;
-  color: #20B2AA;
+  color: #20b2aa;
   font-weight: bold;
   cursor: pointer;
 }
@@ -380,12 +387,12 @@ h2.would-header {
 }
 
 .yourvoteone {
-  background-color: #FFA500;
+  background-color: #ffa500;
   border-radius: 40px;
-  border: solid 1px #FFF;
+  border: solid 1px #fff;
   padding: 10px;
   width: 10%;
-  color: #FFF;
+  color: #fff;
   font-weight: bold;
   font-size: 12px;
   float: right;
@@ -393,12 +400,12 @@ h2.would-header {
 }
 
 .yourvotetwo {
-  background-color: #FFA500;
+  background-color: #ffa500;
   border-radius: 40px;
-  border: solid 1px #FFF;
+  border: solid 1px #fff;
   padding: 10px;
   width: 10%;
-  color: #FFF;
+  color: #fff;
   font-weight: bold;
   font-size: 12px;
   float: right;
@@ -415,14 +422,14 @@ h2.would-header {
 .innner-pro {
   width: auto;
   height: 100%;
-  background: #20B2AA;
+  background: #20b2aa;
   text-align: right;
   padding-right: 5px;
   border-radius: 5px;
 }
 
 .counting {
-  color: #FFF;
+  color: #fff;
   padding-top: 6px;
 }
 

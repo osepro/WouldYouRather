@@ -3,14 +3,14 @@ import { connect } from "react-redux";
 import "../App.css";
 
 class PlayerProfile extends Component {
-  bachHome = (id) => {
-    this.props.history.push(`/users/${id}`);
+  bachHome = () => {
+    this.props.history.push(`/users/`);
   };
   render() {
     return (
       <div>
         <div align="center">
-          <p onClick={() => this.bachHome(this.props.id)} className="homeLink">
+          <p onClick={() => this.bachHome()} className="homeLink">
             Back Home
           </p>
           <div className="paper-1">
@@ -106,8 +106,8 @@ class PlayerProfile extends Component {
   }
 }
 
-function mapStateToProps({ users, questions }, props) {
-  const { id, qid } = props.match.params;
+function mapStateToProps({ users, questions, userloggedin }, props) {
+  const { qid } = props.match.params;
 
   let total = [
     ...questions[qid].optionOne.votes,
@@ -115,10 +115,10 @@ function mapStateToProps({ users, questions }, props) {
   ].length;
 
   const checkOptionChoice = () => {
-    if (questions[qid].optionOne.votes.includes(id)) {
+    if (questions[qid].optionOne.votes.includes(userloggedin)) {
       return "optionOne";
     }
-    if (questions[qid].optionTwo.votes.includes(id)) {
+    if (questions[qid].optionTwo.votes.includes(userloggedin)) {
       return "optionTwo";
     }
 
@@ -135,9 +135,9 @@ function mapStateToProps({ users, questions }, props) {
   ).toFixed(2);
 
   return {
-    id,
-    users: users,
-    questions: questions,
+    id: userloggedin,
+    users,
+    questions,
     OptionOne: questions[qid].optionOne,
     OptionTwo: questions[qid].optionTwo,
     OptionOneTotal,

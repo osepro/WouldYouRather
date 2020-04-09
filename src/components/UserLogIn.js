@@ -21,7 +21,7 @@ class UserLogIn extends Component {
     e.preventDefault();
     const { dispatch } = this.props;
     dispatch(userloggedin(this.state.selectVal));
-    this.props.history.push(`/users/${this.state.selectVal}`);
+    this.props.history.push(`/users/`);
   };
 
   render() {

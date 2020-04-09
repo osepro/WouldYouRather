@@ -70,11 +70,10 @@ class NewQuestions extends Component {
   }
 }
 
-const mapStateToProps = ({ users }, props) => {
-  const { id } = props.match.params;
+const mapStateToProps = ({ users, userloggedin }) => {
   return {
-    users: users,
-    id,
+    users,
+    id: userloggedin,
   };
 };
 

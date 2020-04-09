@@ -3,18 +3,12 @@ import ResultsBoard from "./ResultsBoard";
 import { connect } from "react-redux";
 
 class LeaderBoard extends Component {
-  backHome = (id) => {
-    this.props.history.push(`/users/${id}`);
-  };
   render() {
     return (
       <div align="center">
         <div className="paper">
-          <p onClick={() => this.backHome(this.props.id)} className="homeLink">
-            Back Home
-          </p>
           <div>
-            {Object.keys(this.props.users).map((key, i) => (
+            {this.props.userId.map((key, i) => (
               <div className="leaderProfile" key={i}>
                 <div className="mainDetails gridContainer">
                   <div
@@ -49,12 +43,17 @@ class LeaderBoard extends Component {
   }
 }
 
-function mapStateToProps({ questions, users }, props) {
-  const { id } = props.match.params;
+function mapStateToProps({ questions, users }) {
+  const userId = Object.keys(users).sort(
+    (a, b) =>
+      Object.keys(users[b].answers).length +
+      users[b].questions.length -
+      (Object.keys(users[a].answers).length + users[a].questions.length)
+  );
   return {
-    id,
     questions,
     users,
+    userId,
   };
 }
 

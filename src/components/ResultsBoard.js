@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
-class UsersQuestions extends Component {
+class ResultsBoards extends Component {
   render() {
     return (
       <div>
@@ -24,6 +25,10 @@ class UsersQuestions extends Component {
   }
 }
 
+ResultsBoards.propTypes = {
+  user: PropTypes.string.isRequired,
+};
+
 function mapStateToProps({ questions, users }, props) {
   return {
     questions,
@@ -31,4 +36,4 @@ function mapStateToProps({ questions, users }, props) {
   };
 }
 
-export default connect(mapStateToProps)(UsersQuestions);
+export default connect(mapStateToProps)(ResultsBoards);

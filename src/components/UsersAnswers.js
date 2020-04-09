@@ -1,8 +1,17 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
 
 class UsersAnswers extends Component {
+  goScoreBoard = (id) => {
+    this.props.history.push(`/scoreboard/${id}`);
+  };
   render() {
+    console.log(
+      "Data ===>> ",
+      this.props.questions[Object.keys(this.props.answers)[0]].id
+    );
     return (
       <div>
         <div>
@@ -13,11 +22,27 @@ class UsersAnswers extends Component {
               ].text
             }
           </ul>
+          <div>
+            <button
+              className="view-button"
+              onClick={() =>
+                this.goScoreBoard(
+                  this.props.questions[Object.keys(this.props.answers)[0]].id
+                )
+              }
+            >
+              View Poll
+            </button>
+          </div>
         </div>
       </div>
     );
   }
 }
+
+UsersAnswers.propTypes = {
+  answers: PropTypes.object.isRequired,
+};
 
 function mapStateToProps({ questions, users }) {
   return {
@@ -26,4 +51,4 @@ function mapStateToProps({ questions, users }) {
   };
 }
 
-export default connect(mapStateToProps)(UsersAnswers);
+export default withRouter(connect(mapStateToProps)(UsersAnswers));

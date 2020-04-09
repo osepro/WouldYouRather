@@ -1,18 +1,9 @@
 import React, { Component } from "react";
 import UsersAnswers from "./UsersAnswers";
 import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 
 class AnsweredQuestions extends Component {
-  viewPoll = (id, profileId, qid) => {
-    if (id === profileId) {
-      this.props.history.push(`/scoreboard/${id}/${qid}`);
-    } else {
-      alert("You can't access this account");
-    }
-  };
-  goScoreBoard = (id, qid) => {
-    this.props.history.push(`/scoreboard/${id}/${qid}`);
-  };
   render() {
     return (
       <div>
@@ -36,17 +27,6 @@ class AnsweredQuestions extends Component {
                   <UsersAnswers answers={this.props.users[key].answers} />
                   ...
                 </div>
-                <button
-                  className="view-button"
-                  onClick={() =>
-                    this.goScoreBoard(
-                      this.props.loggediduser,
-                      this.props.users[key].questions[0]
-                    )
-                  }
-                >
-                  View Poll
-                </button>
               </div>
             </div>
           </div>
@@ -56,4 +36,11 @@ class AnsweredQuestions extends Component {
   }
 }
 
-export default withRouter(AnsweredQuestions);
+function mapStateToProps({ userloggedin, users }) {
+  return {
+    loggediduser: userloggedin,
+    users,
+  };
+}
+
+export default withRouter(connect(mapStateToProps)(AnsweredQuestions));
