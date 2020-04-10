@@ -5,25 +5,34 @@ import { withRouter } from "react-router-dom";
 
 class UsersQuestions extends Component {
   viewPoll = (id) => {
-    this.props.history.push(`/questions/${id}`);
+    if (!id) {
+      alert("Congratulations!!! You have all questions here.");
+    } else {
+      this.props.history.push(`/questions/${id}`);
+    }
   };
   render() {
-    const questionCreated = this.props.users[this.props.userid].questions;
+    const { userid, users, userloggedin, questions } = this.props;
+    const questionCreated = users[userid].questions;
+    const answeredQuest = Object.keys(users[userloggedin].answers);
+
+    let checkQuestionedAnswered = new Set(answeredQuest);
+    let resultAfterCheck = [
+      ...new Set(
+        [...questionCreated].filter(
+          (question) => !checkQuestionedAnswered.has(question)
+        )
+      ),
+    ];
 
     return (
       <div>
         <div>
-          <ul>
-            {this.props.question.map((quest) =>
-              this.props.questions[quest] === undefined
-                ? ""
-                : this.props.questions[quest].optionTwo.text.substring(0, 8)
-            )}
-          </ul>
+          <ul>{questions[questionCreated[0]].optionTwo.text.substring(0)}</ul>
           <div>
             <button
               className="view-button"
-              onClick={() => this.viewPoll(questionCreated[0])}
+              onClick={() => this.viewPoll(resultAfterCheck[0])}
             >
               View Poll
             </button>
@@ -38,10 +47,11 @@ UsersQuestions.propTypes = {
   userid: PropTypes.string.isRequired,
 };
 
-function mapStateToProps({ questions, users }) {
+function mapStateToProps({ questions, users, userloggedin }) {
   return {
     questions,
     users,
+    userloggedin,
   };
 }
 

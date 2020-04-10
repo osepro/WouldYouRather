@@ -5,18 +5,17 @@ import { connect } from "react-redux";
 
 class AnsweredQuestions extends Component {
   render() {
+    const { users } = this.props;
     return (
       <div>
-        {Object.keys(this.props.users).map((key, i) => (
+        {Object.keys(users).map((key, i) => (
           <div className="playerProfile" key={i}>
-            <h4 className="header-profile">
-              {this.props.users[key].name} asks:
-            </h4>
+            <h4 className="header-profile">{users[key].name} asks:</h4>
             <div className="mainDetails">
               <div
                 className="profilePix"
                 style={{
-                  backgroundImage: `url(${this.props.users[key].avatarURL})`,
+                  backgroundImage: `url(${users[key].avatarURL})`,
                   backgroundSize: "105px 105px",
                 }}
               ></div>
@@ -24,7 +23,10 @@ class AnsweredQuestions extends Component {
                 <h4 className="would-header">Would you rather</h4>
                 <div>
                   ...
-                  <UsersAnswers answers={this.props.users[key].answers} />
+                  <UsersAnswers
+                    answers={users[key].answers}
+                    userid={users[key].id}
+                  />
                   ...
                 </div>
               </div>

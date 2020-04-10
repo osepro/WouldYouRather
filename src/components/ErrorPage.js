@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import "../App.css";
 import { Link } from "react-router-dom";
 
@@ -14,7 +15,7 @@ class ErrorPage extends Component {
               404 Error
             </h1>
             <h1 className="header-error">
-              <Link to="/">Please sign in to continue</Link>
+              <Link to="/users/">Click to view available questions</Link>
             </h1>
           </div>
         </div>
@@ -23,4 +24,10 @@ class ErrorPage extends Component {
   }
 }
 
-export default ErrorPage;
+const mapStateToProps = ({ userloggedin }) => {
+  return {
+    userloggedin,
+  };
+};
+
+export default connect(mapStateToProps)(ErrorPage);

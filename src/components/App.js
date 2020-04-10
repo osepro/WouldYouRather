@@ -27,15 +27,16 @@ class App extends Component {
           {this.props.loading === true ? null : (
             <div>
               <Route path="/" exact component={UserLogIn} />
-              <Route path="/users/" component={Players} />
+
               <Route path="/newquestions/" component={NewQuestions} />
               <Route path="/scoreboard/:qid" component={ScoreBoard} />
               <Route path="/leaderboard/" component={LeaderBoard} />
-              <Route path="/404/" component={ErrorPage} />
+              <Route path="/users/" component={Players} />
               <PrivateRoute
                 path="/questions/:question_id"
                 component={PlayerProfile}
               />
+              <Route path="/404/" component={ErrorPage} />
             </div>
           )}
         </Fragment>
@@ -44,9 +45,9 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ users }) => {
   return {
-    loading: state.users === null,
+    loading: users === null,
   };
 };
 

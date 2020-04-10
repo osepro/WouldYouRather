@@ -8,27 +8,18 @@ class UsersAnswers extends Component {
     this.props.history.push(`/scoreboard/${id}`);
   };
   render() {
-    console.log(
-      "Data ===>> ",
-      this.props.questions[Object.keys(this.props.answers)[0]].id
-    );
+    const { questions, answers } = this.props;
     return (
       <div>
         <div>
           <ul>
-            {
-              this.props.questions[Object.keys(this.props.answers)[0]][
-                Object.values(this.props.answers)[0]
-              ].text
-            }
+            {questions[Object.keys(answers)[0]][Object.values(answers)[0]].text}
           </ul>
           <div>
             <button
               className="view-button"
               onClick={() =>
-                this.goScoreBoard(
-                  this.props.questions[Object.keys(this.props.answers)[0]].id
-                )
+                this.goScoreBoard(questions[Object.keys(answers)[0]].id)
               }
             >
               View Poll
@@ -42,12 +33,12 @@ class UsersAnswers extends Component {
 
 UsersAnswers.propTypes = {
   answers: PropTypes.object.isRequired,
+  userid: PropTypes.string.isRequired,
 };
 
-function mapStateToProps({ questions, users }) {
+function mapStateToProps({ questions }) {
   return {
     questions: questions,
-    users: users,
   };
 }
 

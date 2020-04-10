@@ -10,9 +10,10 @@ class Nav extends Component {
   };
   handleLogout = () => {
     const { dispatch } = this.props;
-    dispatch(userloggedin(null));
+    dispatch(userloggedin(false));
   };
   render() {
+    const { loggediduser, users } = this.props;
     return (
       <div>
         <div className="appBar">
@@ -20,7 +21,7 @@ class Nav extends Component {
             <ul className="navList">
               <li>
                 <NavLink
-                  to={`${this.props.loggediduser ? `/users/` : "/"}`}
+                  to={`${loggediduser ? `/users/` : "/"}`}
                   exact
                   activeClassName="active-nav"
                 >
@@ -47,11 +48,8 @@ class Nav extends Component {
               </li>
             </ul>
           </div>
-          {this.props.loggediduser === null
-            ? ""
-            : !this.props.users
-            ? ""
-            : Object.keys(this.props.users)
+          {loggediduser && users
+            ? Object.keys(this.props.users)
                 .filter((user) => user === this.props.loggediduser)
                 .map((user, i) => (
                   <div key={i} className="userprofileInfo">
@@ -71,7 +69,8 @@ class Nav extends Component {
                       </Link>
                     </ul>
                   </div>
-                ))}
+                ))
+            : ""}
         </div>
       </div>
     );
