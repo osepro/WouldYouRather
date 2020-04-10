@@ -8,12 +8,22 @@ class UsersAnswers extends Component {
     this.props.history.push(`/scoreboard/${id}`);
   };
   render() {
-    const { questions, answers } = this.props;
+    const { questions, answers, users, userid } = this.props;
+    const answeredQuestions = Object.keys(answers).filter((question) =>
+      users[userid].questions.includes(question)
+    );
+
     return (
       <div>
         <div>
           <ul>
-            {questions[Object.keys(answers)[0]][Object.values(answers)[0]].text}
+            {
+              questions[answeredQuestions[answeredQuestions.length - 1]][
+                answers[
+                  questions[answeredQuestions[answeredQuestions.length - 1]].id
+                ]
+              ].text
+            }
           </ul>
           <div>
             <button
@@ -36,9 +46,10 @@ UsersAnswers.propTypes = {
   userid: PropTypes.string.isRequired,
 };
 
-function mapStateToProps({ questions }) {
+function mapStateToProps({ questions, users }) {
   return {
-    questions: questions,
+    questions,
+    users,
   };
 }
 

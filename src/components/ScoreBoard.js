@@ -47,94 +47,90 @@ class PlayerProfile extends Component {
             Back Home
           </p>
           <div className="paper-1">
-            {Object.keys(users)
-              .filter((user) => users[user].id === id)
-              .map((key, i) => (
-                <div className="playerProfile-inner-2" key={i}>
-                  <h4 className="header-profile">
-                    Asked by {users[questDetails.author].name}
-                  </h4>
-                  <div className="mainDetails">
+            {
+              <div className="playerProfile-inner-2">
+                <h4 className="header-profile">
+                  Asked by {users[questDetails.author].name}
+                </h4>
+                <div className="mainDetails">
+                  <div
+                    className="profilePix"
+                    style={{
+                      backgroundImage: `url(${
+                        users[questDetails.author].avatarURL
+                      })`,
+                      backgroundSize: "105px 105px",
+                    }}
+                  ></div>
+                  <div className="profileContent">
+                    <h2 className="would-header">Results:</h2>
+                    {this.checkOptionChoice(questDetails, id) ===
+                    "optionOne" ? (
+                      <div className="yourvoteone">Your Vote</div>
+                    ) : (
+                      <div className="yourvotetwo">Your Vote</div>
+                    )}
                     <div
-                      className="profilePix"
+                      className="topOne"
                       style={{
-                        backgroundImage: `url(${
-                          users[questDetails.author].avatarURL
-                        })`,
-                        backgroundSize: "105px 105px",
+                        backgroundColor:
+                          this.checkOptionChoice(questDetails, id) ===
+                          "optionOne"
+                            ? "#7FFFD4"
+                            : "",
+                        color: "#20B2AA",
                       }}
-                    ></div>
-                    <div className="profileContent">
-                      <h2 className="would-header">Results:</h2>
-                      {() =>
-                        this.checkOptionChoice(questDetails, id) ===
-                        "optionOne" ? (
-                          <div className="yourvoteone">Your Vote</div>
-                        ) : (
-                          <div className="yourvotetwo">Your Vote</div>
-                        )
-                      }
-                      <div
-                        className="topOne"
-                        style={{
-                          backgroundColor:
-                            this.checkOptionChoice(questDetails, id) ===
-                            "optionOne"
-                              ? "#7FFFD4"
-                              : "",
-                          color: "#20B2AA",
-                        }}
-                      >
-                        <h4>Would you rather {questDetails.optionOne.text}</h4>
-                        <div className="main-outter">
-                          <div
-                            className="innner-pro"
-                            style={{
-                              width: OptionOneTotal + "%",
-                            }}
-                          >
-                            <p className="counting">{OptionOneTotal}%</p>
-                          </div>
+                    >
+                      <h4>Would you rather {questDetails.optionOne.text}</h4>
+                      <div className="main-outter">
+                        <div
+                          className="innner-pro"
+                          style={{
+                            width: OptionOneTotal + "%",
+                          }}
+                        >
+                          <p className="counting">{OptionOneTotal}%</p>
                         </div>
-                        <p style={{ color: "#000" }}>
-                          <strong>
-                            {questDetails.optionOne.votes.length} out of
-                            {total} votes
-                          </strong>
-                        </p>
                       </div>
-                      <div
-                        className="topTwo"
-                        style={{
-                          backgroundColor: () =>
-                            this.checkOptionChoice(questDetails, id) ===
-                            "optionTwo"
-                              ? "#7FFFD4"
-                              : "",
-                        }}
-                      >
-                        <h4>Would you rather {questDetails.optionTwo.text}</h4>
-                        <div className="main-outter">
-                          <div
-                            className="innner-pro"
-                            style={{
-                              width: OptionTwoTotal + "%",
-                            }}
-                          >
-                            <p className="counting">{OptionTwoTotal}%</p>
-                          </div>
+                      <p style={{ color: "#000" }}>
+                        <strong>
+                          {questDetails.optionOne.votes.length} out of
+                          {total} votes
+                        </strong>
+                      </p>
+                    </div>
+                    <div
+                      className="topTwo"
+                      style={{
+                        backgroundColor: () =>
+                          this.checkOptionChoice(questDetails, id) ===
+                          "optionTwo"
+                            ? "#7FFFD4"
+                            : "",
+                      }}
+                    >
+                      <h4>Would you rather {questDetails.optionTwo.text}</h4>
+                      <div className="main-outter">
+                        <div
+                          className="innner-pro"
+                          style={{
+                            width: OptionTwoTotal + "%",
+                          }}
+                        >
+                          <p className="counting">{OptionTwoTotal}%</p>
                         </div>
-                        <p style={{ color: "#000" }}>
-                          <strong>
-                            {questDetails.optionTwo.votes.length} out of
-                            {total} votes
-                          </strong>
-                        </p>
                       </div>
+                      <p style={{ color: "#000" }}>
+                        <strong>
+                          {questDetails.optionTwo.votes.length} out of
+                          {total} votes
+                        </strong>
+                      </p>
                     </div>
                   </div>
                 </div>
-              ))}
+              </div>
+            }
           </div>
         </div>
       </div>
