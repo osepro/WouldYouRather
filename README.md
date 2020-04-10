@@ -1,23 +1,25 @@
 # Would You Rather Project
 
-Final assessment project for Udacity's React & Redux course.
+It's a fun party game developed using React & Redux.
 
-## To run the application locally right:
+# Getting Started
+
+Make sure you are able to open a command prompt/terminal.
+
+## Installing
+
+- Download or clone project repository
 
 ```bash
 - git clone https://github.com/osepro/WouldYouRather.git
 - cd WouldYouRather
 ```
 
-## Install Dependencies
-
 - install all project dependencies
 
 ```bash
 `yarn install`
 ```
-
-## Start Development Server to Run
 
 - Start the development server with
 

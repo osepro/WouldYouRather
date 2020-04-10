@@ -315,6 +315,11 @@ h2.would-header {
   width: 117px;
 }
 
+.thumbs-icon {
+  color: cornflowerblue;
+  font-weight: bold;
+}
+
 .navList li a {
   text-decoration: none;
   padding-left: 10%;

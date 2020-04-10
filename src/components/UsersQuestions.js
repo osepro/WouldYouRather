@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
+import { TiThumbsUp } from "react-icons/ti/index";
 
 class UsersQuestions extends Component {
   viewPoll = (id) => {
@@ -28,7 +29,15 @@ class UsersQuestions extends Component {
     return (
       <div>
         <div>
-          <ul>{questions[questionCreated[0]].optionTwo.text.substring(0)}</ul>
+          <ul>
+            {resultAfterCheck[0] ? (
+              questions[resultAfterCheck[0]].optionTwo.text.substring(0)
+            ) : (
+              <div className="thumbs-icon">
+                <TiThumbsUp /> All questions answered
+              </div>
+            )}
+          </ul>
           <div>
             <button
               className="view-button"
