@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import "../App.css";
+import { connect } from "react-redux";
 import AnsweredQuestions from "./AnsweredQuestions";
 import UnAnsweredQuestions from "./UnAnsweredQuestions";
+import { Redirect } from "react-router-dom";
 
 class Players extends Component {
   state = {
@@ -16,6 +17,10 @@ class Players extends Component {
   };
 
   render() {
+    const { userloggedin } = this.props;
+    if (!userloggedin) {
+      return <Redirect to="/" />;
+    }
     return (
       <div>
         <div>
@@ -48,24 +53,9 @@ class Players extends Component {
   }
 }
 
-function mapStateToProps({ users, questions, userloggedin }) {
-  const answeredquest = Object.keys(users[userloggedin].answers);
-
-  const answered = Object.values(questions)
-    .filter((question) => answeredquest.includes(question.id))
-    .sort((a, b) => b.timestamp - a.timestamp);
-
-  const notanswered = Object.values(questions)
-    .filter((question) => !answeredquest.includes(question.id))
-    .sort((a, b) => b.timestamp - a.timestamp);
-
+function mapStateToProps({ userloggedin }) {
   return {
-    id: userloggedin,
-    users: users,
-    questions: questions,
-    loggediduser: userloggedin,
-    answered,
-    notanswered: notanswered[0],
+    userloggedin,
   };
 }
 

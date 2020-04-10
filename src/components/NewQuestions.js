@@ -17,15 +17,19 @@ class NewQuestions extends Component {
   handleSubmit = () => {
     const { optionOneText, optionTwoText } = this.state;
     const { dispatch, id } = this.props;
-    dispatch(createNewQuestion({ id, optionOneText, optionTwoText }));
-
-    this.setState(
-      {
-        optionOneText: "",
-        optionTwoText: "",
-      },
-      () => this.props.history.push(`/users/${id}`)
-    );
+    if (id) {
+      dispatch(createNewQuestion({ id, optionOneText, optionTwoText }));
+      this.setState(
+        {
+          optionOneText: "",
+          optionTwoText: "",
+        },
+        () => this.props.history.push(`/users/${id}`)
+      );
+    } else {
+      this.props.history.push("/");
+      alert("Please login to creat a question");
+    }
   };
 
   render() {

@@ -8,13 +8,22 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
     <Route
       {...rest}
       render={(props) =>
-        loggediduser ? <Component {...props} /> : <Redirect to="/404" />
+        loggediduser ? (
+          <Component {...props} />
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/",
+              state: { from: props.location },
+            }}
+          />
+        )
       }
     />
   );
 };
 
-function mapStateToProps({ users, userloggedin }) {
+function mapStateToProps({ userloggedin }) {
   return {
     loggediduser: userloggedin,
   };

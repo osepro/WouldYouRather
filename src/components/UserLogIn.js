@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import "../App.css";
 import logoReduxReact from "../logoReduxReact.jpeg";
+import { TiWarning } from "react-icons/ti/index";
 import { userloggedin } from "../actions/userloggedin";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 
 class UserLogIn extends Component {
   state = {
     selectVal: null,
+    userRedirect: false,
   };
 
   handleSelect = (e) => {
@@ -19,12 +22,26 @@ class UserLogIn extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    if (userloggedin) {
+      this.setState(() => ({
+        userRedirect: true,
+      }));
+    }
     const { dispatch } = this.props;
     dispatch(userloggedin(this.state.selectVal));
-    this.props.history.push(`/users/`);
   };
 
   render() {
+    const { from } = this.props.location.state || {
+      from: { pathname: "/users" },
+    };
+    const { userRedirect } = this.state;
+    const { users, userloggedin } = this.props;
+
+    if (userRedirect === true) {
+      return <Redirect to={from} />;
+    }
+
     return (
       <div>
         <div align="center">
@@ -40,10 +57,13 @@ class UserLogIn extends Component {
                 width="200"
               />
             </p>
-            <p
-              align="center"
-              style={{ color: "#3BFEBB", fontSize: "16px", fontWeight: "bold" }}
-            >
+            {userloggedin === null && (
+              <p className="warning-login-show">
+                <TiWarning /> error! Please select a user
+              </p>
+            )}
+
+            <p align="center" className="signInLogin">
               Sign in
             </p>
             <div>
@@ -51,19 +71,19 @@ class UserLogIn extends Component {
                 <form onSubmit={this.handleSubmit}>
                   <select id="users" onChange={this.handleSelect}>
                     <option>Select User</option>
-                    {!this.props.users
+                    {!users
                       ? ""
-                      : Object.keys(this.props.users).map((key) => (
+                      : Object.keys(users).map((key) => (
                           <option
-                            key={this.props.users[key].id}
-                            value={this.props.users[key].id}
+                            key={users[key].id}
+                            value={users[key].id}
                             style={{
-                              backgroundImage: `url(${this.props.users[key].avatarURL})`,
+                              backgroundImage: `url(${users[key].avatarURL})`,
                               backgroundSize: "15px 15px",
                               float: "left",
                             }}
                           >
-                            {this.props.users[key].name}
+                            {users[key].name}
                           </option>
                         ))}
                   </select>
@@ -79,10 +99,10 @@ class UserLogIn extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ users, userloggedin }) => {
   return {
-    users: state.users,
-    questions: state.questions,
+    users,
+    userloggedin,
   };
 };
 
