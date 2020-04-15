@@ -43,7 +43,7 @@ class UsersQuestions extends Component {
               className="view-button"
               onClick={() => this.viewPoll(resultAfterCheck[0])}
             >
-              View Poll
+              Answer This Question
             </button>
           </div>
         </div>
