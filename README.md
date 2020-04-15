@@ -34,9 +34,7 @@ Please note port number may be different, if port 3000 is already in use.
 
 # Would You Rather Project App Functionality
 
-"Would you rather" is a conversation game that poses a questions in which a participant must choose an option. Each question beginning with "would you rather". After each response, the vote for each question is shown. And the user can check leader board to see most answered questions and who has created the most question.
-
-Each user have the opportunity to add more questions to the application.
+"Would you rather" is a conversation game that poses dilemmas beginning with "would you rather". Participants must answer by choosing between the two given options. The dilemma may be choosing between two attractive options (e.g., "Would you rather find $50 yourself or have your best friend find $500?")or two unattractive options (e.g., "Would you rather have horrible short term memory or have horrible long term memory?") After responding to each question, the participant is shown a poll of how many other participants chose each response option. Particpants can create new questions for others to answer. They can also view the leaderboard to see how many new questions other participants have created and how many questions others have answered.
 
 The `_DATA.js` file represents a fake database and methods that let you access the data. The only thing you need to edit in the `_DATA.js` file is the value of `avatarURL`. Each user should have an avatar, so you’ll need to add the path to each user’s avatar.
 
